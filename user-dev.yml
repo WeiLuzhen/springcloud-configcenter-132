@@ -6,6 +6,7 @@ server:
 spring:
   application:
     name: microservice-user
+    
   #设置数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,6 +23,16 @@ spring:
     generate-ddl: true
     #显示sql语句
     show-sql: true
+    
+  #微服务提供方user向zipkin服务器发送信息的配置
+  zipkin:
+    base-url: http://192.168.17.1:9041
+    sender:
+      type: web #给zipkin发送信息的sender的类型是web服务器，而不是RabibitMQ
+  #100%跟踪采样
+  sleuth:
+    sampler:
+      probability: 1
 #、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
 #eureka客户端
 eureka:
